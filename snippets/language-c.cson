@@ -1,7 +1,7 @@
 '.source.c, .source.cpp, .source.objc, .source.objcpp':
   '#ifndef … #define … #endif':
     'prefix': 'def'
-    'body': '#ifndef ${1:SYMBOL}\n#define $1 ${2:value}\n#endif'
+    'body': '#define $1 ${2:value}'
   '#include <>':
     'prefix': 'Inc'
     'body': '#include <${1:.h}>'
@@ -16,7 +16,7 @@
     'body': 'int main(int argc, char const *argv[]) {\n\t${1:/* code */}\n\treturn 0;\n}'
   'For Loop':
     'prefix': 'for'
-    'body': 'for (size_t ${1:i} = 0; ${1:i} < ${2:count}; ${1:i}${3:++}) {\n\t${4:/* code */}\n}'
+    'body': 'for (${1:i} = 0; ${1:i} < ${2:count}; ++${1:i}${3:}) {\n\t${4:/* code */}\n}'
   'Header Include-Guard':
     'prefix': 'once'
     'body': '#ifndef ${1:SYMBOL}\n#define $1\n\n${2}\n\n#endif /* end of include guard: $1 */\n'
